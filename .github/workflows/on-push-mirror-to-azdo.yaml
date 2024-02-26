@@ -1,0 +1,24 @@
+name: Mirror changes to Azure DevOps
+on: push
+jobs:
+  checkout-github-and-azdo-copy-push-azdo:
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run script file
+      env:
+        AZORG: ${{vars.AZORG}}
+        AZPROJECT: ${{vars.AZPROJECT}}
+        AZREPOSITORY: ${{vars.AZREPOSITORY}}
+        AZUSERNAME: ${{vars.AZUSERNAME}}
+        AZUREPAT: ${{secrets.AZUREPAT}}
+
+        GITHUBBRANCH: ${{github.ref_name}}
+        GITHUBPAT: ${{secrets.GITHUBPAT}}
+        GITHUBREPOSITORY: ${{github.repository}}
+        GITHUBUSERNAME: ${{vars.GITHUBUSERNAME}}
+      run: |
+         chmod +x .github/workflows-scripts/mirror-to-azdo.sh
+         ./.github/workflows-scripts/mirror-to-azdo.sh
+      shell: bash
