@@ -1,6 +1,6 @@
 # TLDR;
 
-This repository shows how I use [a github action](`.github/workflows/on-push-mirror-to-azdo.yaml`) to automatically call a [bash script](.github/workflows-scripts/mirror-to-azdo.sh) mirror all pushes on my Github repository to my Azure Devops repository. This is done by cloning the Github repository, setting a new remote to Azure Devops and pushing to this new remote.
+This repository shows how I use [a github action](.github/workflows/on-push-mirror-to-azdo.yaml) to automatically call a [bash script](.github/workflows-scripts/mirror-to-azdo.sh) which mirrors all pushes on my Github repository to my Azure Devops repository. This is done by cloning the Github repository, setting a new remote to Azure Devops and pushing to this new remote.
 
 # What is needed before starting
 - A Github repository which commits are to be mirrored on Azure Devops
