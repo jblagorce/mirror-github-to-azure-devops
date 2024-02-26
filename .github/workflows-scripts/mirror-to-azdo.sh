@@ -26,10 +26,13 @@ git remote add azuredevops "https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/$
 
 git push --set-upstream azuredevops $GITHUBBRANCH
 
-if [ "$?" -ne "0" ]; then
+success = "$?"
+if [ "$success" -ne "0" ]; then
     echo "Failed to push branch $GITHUBBRANCH on azure devops."
 fi
 
 cd ..
 
 rm -rf githubsource
+
+exit $success
