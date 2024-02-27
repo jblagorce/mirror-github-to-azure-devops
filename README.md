@@ -31,6 +31,7 @@ In this environment, `Dev`, there should be :
 - a `GITHUBUSERNAME` environment **variable** containing the Github user name of the Github User the Github Personal Access Token belongs to.
 
 # Enabling the mirroring
-As soon as the `.github` subtree is included and pushed in the Github repository, each branch containing it will be mirrored to the Azure Devops Repository.
+As soon as the `.github` subtree is included and pushed in the Github repository, each pushed branch containing it will be mirrored to the Azure Devops repository.
 
-
+Warning : Force pushing on Github (hence trying to "forget" commits already mirrored on Azure Devops), or performing commits directly on Azure Devops, will most of the time create tricky merge conflicts which will block the mirroring process.
+You can mitigate this issue by restricting the mirroring to the main branch ([see documentation](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#running-your-workflow-only-when-a-push-to-specific-branches-occurs)) and disallow force pushing on main branch.
